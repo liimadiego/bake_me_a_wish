@@ -1,9 +1,9 @@
 <?php
 try {
     $pdo = new PDO(//In case of production environment, I would not use these hardcoded parameters.
-        'mysql:host=localhost;dbname=orders_db;charset=utf8mb4',
-        'root',
-        '',
+        'mysql:host=localhost;dbname=orders_db;charset=utf8mb4', //host + db name
+        'root', //db user
+        '', //db password
         [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
