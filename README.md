@@ -20,7 +20,7 @@ A simple PHP project for managing orders securely
     ```bash
         CREATE DATABASE IF NOT EXISTS `orders_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-        USE `orders`;
+        USE `orders_db`;
 
         CREATE TABLE `orders` (
             `id` int(11) NOT NULL AUTO_INCREMENT,
