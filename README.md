@@ -37,9 +37,8 @@ A simple PHP project for managing orders securely
 
 3. Configure your database connection in src/db.php:
     ```bash
-        Configure host and database credentials
+        Set up the host and database credentials in the file located at src/db.php
     ```
-
 
 4. Start the PHP built-in server:
     ```bash
