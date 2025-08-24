@@ -71,7 +71,15 @@ function processPhoto(array $fileInfo): ?string {
     $extension = ($mimeType === 'image/jpeg') ? '.jpg' : '.png';
     $filename = bin2hex(random_bytes(16)) . $extension;
 
-    $uploadPath = __DIR__ . '/../uploads/' . $filename;
+    $uploadDir = __DIR__ . '/../uploads/';
+    
+    if (!is_dir($uploadDir)) {
+        if (!mkdir($uploadDir, 0755, true)) {
+            throw new Exception('Failed to create uploads directory');
+        }
+    }
+
+    $uploadPath = $uploadDir . $filename;
 
     if ($mimeType === 'image/jpeg') {
         $img = imagecreatefromjpeg($fileInfo['tmp_name']);
