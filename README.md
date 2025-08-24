@@ -18,7 +18,7 @@ A simple PHP project for managing orders securely
 
 2. Set up the MySQL database and create the table:
     ```bash
-        CREATE DATABASE IF NOT EXISTS `orders` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+        CREATE DATABASE IF NOT EXISTS `orders_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
         USE `orders`;
 
