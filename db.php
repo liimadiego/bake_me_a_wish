@@ -1,6 +1,6 @@
 <?php
 try {
-    $pdo = new PDO(
+    $pdo = new PDO(//In case of production environment, I would not use these hardcoded parameters.
         'mysql:host=localhost;dbname=orders_db;charset=utf8mb4',
         'root',
         '',

@@ -108,7 +108,7 @@ try {
     
     $giftMessage = validateAndNormalizeUTF8($_POST['gift_message'] ?? '');
     if (empty($giftMessage)) {
-        throw new Exception('Gift message is required');
+        throw new Exception('gift message is required');
     }
     
     $quantity = validateQuantity($_POST['quantity'] ?? '');
@@ -117,6 +117,7 @@ try {
     }
     
     $deliveryDate = validateDeliveryDate($_POST['delivery_date'] ?? '');
+
     if (!$deliveryDate) {
         throw new Exception('Delivery date must be today or later and in YYYY-MM-DD format');
     }
@@ -141,20 +142,20 @@ try {
     ]);
     
     $emailBody = "New Order Received:\n\n";
-    $emailBody .= "Name: " . $name . "\n";
-    $emailBody .= "Email: " . $email . "\n";
-    $emailBody .= "Message: " . $giftMessage . "\n";
-    $emailBody .= "Quantity: " . $quantity . "\n";
-    $emailBody .= "Delivery Date: " . $deliveryDate . "\n";
+    $emailBody .= "name: " . $name . "\n";
+    $emailBody .= "email: " . $email . "\n";
+    $emailBody .= "message: " . $giftMessage . "\n";
+    $emailBody .= "qty: " . $quantity . "\n";
+    $emailBody .= "delivery date: " . $deliveryDate . "\n";
     if ($photoFilename) {
         $emailBody .= "Photo: " . $photoFilename . "\n";
     }
     
-    $headers = "From: system@example.com\r\n";
-    $headers .= "Reply-To: " . $email . "\r\n";
+    $headers = "From: contact@bakemeawish.com\r\n";
+    $headers .= "Reply-To: " .$email. "\r\n";
     $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
     
-    mail('ops@example.com', 'New Order Received', $emailBody, $headers);
+    mail('emaildodiego@example.com', 'New Order Received', $emailBody,$headers);
     
 } catch (Exception $e) {
     http_response_code(400);
@@ -183,7 +184,7 @@ try {
     
     <script>
         const note = <?= escapeJs($giftMessage) ?>;
-        console.log('Gift message:', note);
+        console.log('Gift Message:', note);
         
         const orderData = {
             name: <?= escapeJs($name) ?>,
@@ -193,7 +194,7 @@ try {
             message: <?= escapeJs($giftMessage) ?>
         };
         
-        console.log('Order data:', orderData);
+        console.log('Orderdata', orderData);
     </script>
 </body>
 </html>
