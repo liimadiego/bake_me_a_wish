@@ -1,3 +1,11 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require __DIR__ . '/../src/form_handler.php';
+}
+
+session_start();
+$_SESSION['csrf'] = bin2hex(random_bytes(32));
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +26,9 @@
 <body>
     <h1>Gift Order</h1>
     
-    <form action="form_handler.php" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="csrf" value="<?php echo bin2hex(random_bytes(32)); ?>">
-        
+    <form action="index.php" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="csrf" value="<?php echo $_SESSION['csrf']; ?>">
+
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -54,7 +62,7 @@
     </form>
 
     <script>
-        document.getElementById('delivery_date').min = new Date().toISOString().split('T')[0];
+        // document.getElementById('delivery_date').min = new Date().toISOString().split('T')[0];
     </script>
 </body>
 </html>
